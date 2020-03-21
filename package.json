@@ -9,6 +9,7 @@
     "firebase": "^7.11.0",
     "gulp": "^4.0.2",
     "gulp-print": "^5.0.2",
+    "md5": "^2.2.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-router-dom": "^5.1.2",
