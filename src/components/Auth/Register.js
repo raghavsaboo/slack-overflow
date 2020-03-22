@@ -11,7 +11,8 @@ class Register extends React.Component {
         password: '',
         passwordConfirmation: '',
         errors: [],
-        loading: false
+        loading: false,
+        usersRef: firebase.database().ref('users')
     };
 
     isFormValid = () => {
@@ -65,7 +66,10 @@ class Register extends React.Component {
                         photoURL: `http://gravatar.com/avatar/${md5(createdUser.user.email)}?d=identicon`
                     })
                     .then(() => {
-                        this.setState({ loading: false });
+                        this.saveUser(createdUser).then(() => {
+                            this.setState({ loading: false })
+                            console.log('User Saved.');
+                        })
                     })
                     .catch(err => {
                         console.error(err);
@@ -74,13 +78,20 @@ class Register extends React.Component {
                 })
                 .catch(err => {
                     console.error(err);
-                    this.setState({ errors: this.state.errors.concat(err), loading: false})
+                    this.setState({ errors: this.state.errors.concat(err), loading: false});
                 })
         }
     }
 
     handleInputError = (errors, inputName) => {
-        return errors.some(error => error.message.toLowerCase().includes(inputName)) ? 'error' : ''
+        return errors.some(error => error.message.toLowerCase().includes(inputName)) ? 'error' : '';
+    }
+
+    saveUser = createdUser => {
+        return this.state.usersRef.child(createdUser.user.uid).set({
+            displayName: createdUser.user.displayName,
+            gravatar: createdUser.user.photoURL
+        });
     }
 
     render() {
@@ -89,7 +100,7 @@ class Register extends React.Component {
         return (
             <Grid textAlign="center" verticalAlign="middle" className="app">
                 <Grid.Column style={{ maxWidth: 450 }} >
-                    <Header as="h2" icon color="orange" textAlign="center">
+                    <Header as="h1" icon color="orange" textAlign="center">
                         <Icon name="puzzle piece" color="orange" />
                         Register for Slack Overflow
                     </Header>
