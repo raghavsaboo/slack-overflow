@@ -4,14 +4,14 @@ import "firebase/storage"
 import "firebase/database"
 
 var firebaseConfig = {
-    apiKey: "AIzaSyAf5O9Rzr6pgWWm3KaYvFt2E4NLJBA8RT4",
-    authDomain: "slack-overflow-460c0.firebaseapp.com",
-    databaseURL: "https://slack-overflow-460c0.firebaseio.com",
-    projectId: "slack-overflow-460c0",
-    storageBucket: "slack-overflow-460c0.appspot.com",
-    messagingSenderId: "535339523061",
-    appId: "1:535339523061:web:2ad9547a8cb4073b2b5ebc",
-    measurementId: "G-TDKZS6M0H7"
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_DATABASE_URL,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_APP_ID,
+    measurementId: process.env.REACT_APP_MEASUREMENT_ID
 };
 
 // Initialize Firebase
