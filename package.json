@@ -6,7 +6,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
-    "firebase": "^7.11.0",
+    "firebase": "^10.9.0",
     "gulp": "^4.0.2",
     "gulp-print": "^5.0.2",
     "md5": "^2.2.1",
